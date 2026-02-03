@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Brasil HPS | Prosperidade e Lastro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; color: #2D3436; background-color: #FCFDFB; }
+        h1, h2 { font-family: 'Playfair Display', serif; color: #046319; } /* Verde HPS */
+
+        /* Brilho Verde Esmeralda para o Brasil */
+        .bank-card-live {
+            width: 400px;
+            height: 250px;
+            border-radius: 20px;
+            position: relative;
+            padding: 2px;
+            overflow: hidden;
+            transition: all 1s ease-in-out;
+            box-shadow: 0 20px 40px rgba(4, 99, 25, 0.1);
+        }
+
+        .card-border-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 70%,
+                #046319 80%, 
+                #D4AF37 90%, 
+                transparent 100%
+            );
+            animation: rotateGlow 5s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotateGlow {
+            100% { transform: rotate(360deg); }
+        }
+
+        .card-inner {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            border-radius: 18px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .chip {
+            width: 50px;
+            height: 35px;
+            background: linear-gradient(135deg, #d4af37, #f9e498);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="py-6 px-12 flex justify-between items-center border-b border-gray-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center space-x-4">
+            <div class="w-8 h-8 bg-[#046319] rounded flex items-center justify-center text-white text-[10px] font-bold">BR</div>
+            <span class="text-xl font-bold tracking-tighter text-[#046319]">Bank Brasil HPS</span>
+        </div>
+        <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-500">
+            <a href="#" class="hover:text-[#046319] transition">Agronegócio</a>
+            <a href="#" class="hover:text-[#046319] transition">Private</a>
+            <a href="#" class="hover:text-[#046319] transition">IArtium Tech</a>
+            <a href="#" class="text-[#046319] border border-[#046319] px-4 py-2 rounded-lg hover:bg-[#046319] hover:text-white transition">Acessar Conta</a>
+        </nav>
+    </header>
+
+    <section class="relative h-[80vh] flex items-center overflow-hidden">
+        <div class="container mx-auto px-12 flex flex-col md:flex-row items-center justify-between relative z-10">
+            <div class="md:w-1/2">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-green-700 font-bold mb-4 block">A Força da Nossa Terra, o Lastro do Ouro</span>
+                <h1 id="hero-text" class="text-6xl leading-tight mb-8"></h1>
+                <p class="text-gray-500 mb-8 max-w-md">Conectando a liquidez global do Bank New York e a custódia suíça ao coração do Brasil.</p>
+                <button class="bg-[#046319] text-white px-10 py-4 rounded-full text-xs font-bold tracking-widest hover:bg-green-900 transition shadow-lg">ABRIR MINHA CONTA</button>
+            </div>
+
+            <div class="md:w-1/2 flex justify-end mt-12 md:mt-0">
+                <div id="card-container" class="bank-card-live scale-110">
+                    <div id="glow-line" class="card-border-glow"></div>
+                    <div id="card-body" class="card-inner bg-white">
+                        <div class="flex justify-between items-start">
+                            <div class="chip"></div>
+                            <span id="card-type-label" class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400">Standard White</span>
+                        </div>
+                        <div class="mt-auto">
+                            <div class="text-lg font-mono tracking-widest mb-2" id="card-number-mock">**** **** **** 1500</div>
+                            <div class="flex justify-between items-end">
+                                <span class="text-xs font-light uppercase tracking-widest opacity-70">Paulo Salomão</span>
+                                <span class="text-xl font-black italic text-[#046319]">HPS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-green-50/50">
+        <div class="container mx-auto px-12 grid md:grid-cols-3 gap-12">
+            <div class="p-8 bg-white rounded-3xl shadow-sm border border-green-100">
+                <div class="text-3xl mb-4">🌱</div>
+                <h3 class="font-bold mb-2">Agro-Liquidez</h3>
+                <p class="text-sm text-gray-500">Transformamos a força do campo em lastro digital instantâneo com tecnologia IArtium.</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl shadow-sm border border-green-100">
+                <div class="text-3xl mb-4">🏛️</div>
+                <h3 class="font-bold mb-2">Conexão Suíça</h3>
+                <p class="text-sm text-gray-500">Seus ativos no Brasil com o mesmo rigor de custódia do Swiss HPS Bank.</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl shadow-sm border border-green-100">
+                <div class="text-3xl mb-4">⚡</div>
+                <h3 class="font-bold mb-2">Pix-Gold</h3>
+                <p class="text-sm text-gray-500">A agilidade do sistema brasileiro com a segurança do ouro físico Holding PS.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-12 border-t border-gray-100 text-center">
+        <p class="text-[10px] text-gray-400 uppercase tracking-widest">© 2026 Bank Brasil HPS | Uma empresa Holding Paulo Salomão</p>
+        <p class="text-[10px] text-gray-300 mt-2 font-mono">Infraestrutura High-Tech por IArtium.com</p>
+    </footer>
+
+    <script>
+        const brData = [
+            { text: "Liquidez imediata para quem move o Brasil.", cardClass: "bg-white", textColor: "text-gray-800", label: "Standard White", glow: "#046319" },
+            { text: "Soluções corporativas com a força do mercado interno.", cardClass: "bg-gray-800", textColor: "text-white", label: "Silver Business", glow: "#C0C0C0" },
+            { text: "Ouro físico como garantia para o seu agronegócio.", cardClass: "bg-[#046319]", textColor: "text-white", label: "Gold Wealth", glow: "#D4AF37" },
+            { text: "Soberania nacional com acesso ao Nó New York.", cardClass: "bg-black", textColor: "text-yellow-500", label: "Legacy Black", glow: "#046319" }
+        ];
+
+        let currentIndex = 0;
+        const textElement = document.getElementById('hero-text');
+        const cardBody = document.getElementById('card-body');
+        const cardLabel = document.getElementById('card-type-label');
+        const glowLine = document.getElementById('glow-line');
+
+        function typeWriter(text, i, fnCallback) {
+            if (i < text.length) {
+                textElement.innerHTML = text.substring(0, i+1) + '<span class="animate-pulse text-green-700">|</span>';
+                setTimeout(() => typeWriter(text, i + 1, fnCallback), 40);
+            } else if (typeof fnCallback == 'function') {
+                setTimeout(fnCallback, 3500);
+            }
+        }
+
+        function startSlider() {
+            const data = brData[currentIndex];
+            cardBody.className = `card-inner ${data.cardClass} ${data.textColor}`;
+            cardLabel.innerText = data.label;
+            glowLine.style.background = `conic-gradient(from 0deg, transparent 70%, ${data.glow} 80%, #D4AF37 90%, transparent 100%)`;
+            
+            typeWriter(data.text, 0, () => {
+                currentIndex = (currentIndex + 1) % brData.length;
+                startSlider();
+            });
+        }
+
+        window.onload = startSlider;
+    </script>
+</body>
+</html>
