@@ -62,6 +62,139 @@
             background: linear-gradient(135deg, #d4af37, #f9e498);
             border-radius: 6px;
         }
+        
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; color: #333333; background-color: #ffffff; }
+        h1, h2 { font-family: 'Playfair Display', serif; color: #1a1a1a; }
+        .text-graphite { color: #333333; }
+        .bg-graphite { background-color: #333333; }
+        
+        /* Transição suave para o Slider */
+        .fade-slide { transition: opacity 0.8s ease-in-out; }
+        
+        
+                @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --brand-green: #046319;
+            --gold: #D4AF37;
+        }
+
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        .bg-brand { background-color: var(--brand-green); }
+        .text-brand { color: var(--brand-green); }
+        
+                .bank-section { transition: all 0.3s ease; }
+        .bank-section:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        
+        .card-chip {
+            width: 40px; height: 30px;
+            background: linear-gradient(135deg, #ffd700, #b8860b);
+            border-radius: 4px;
+        }
+
+        /* Animação de processamento */
+        #loader-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.8);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes goldFall {
+            0% { transform: translate(0, -10px) rotate(0deg); opacity: 1; }
+            100% { transform: translate(0, 300px) rotate(360deg); opacity: 0; }
+        }
+        .gold-particle {
+            position: absolute;
+            background-color: var(--gold); /* Usando sua variável gold */
+            border-radius: 50%;
+            animation: goldFall linear forwards;
+            opacity: 0; /* Inicia invisível para o JavaScript controlar o fade-in */
+        }
+        
+        @keyframes goldFall {
+    0% { 
+        transform: translateY(-20px) translateX(0) rotate(0deg); 
+        opacity: 0; 
+    }
+    10% { opacity: 1; }
+    100% { 
+        transform: translateY(400px) translateX(20px) rotate(360deg); 
+        opacity: 0; 
+    }
+}
+
+.gold-particle {
+    position: absolute;
+    background: linear-gradient(135deg, #D4AF37, #F9E498); /* Degradê metálico */
+    border-radius: 2px; /* Mais parecido com lascas de ouro do que círculos perfeitos */
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.8);
+    animation: goldFall linear forwards;
+    pointer-events: none;
+}
+
+/* Container do Cartão com Proporção Bancária */
+.bank-card-live {
+    width: 400px;
+    height: 250px;
+    border-radius: 20px;
+    position: relative;
+    padding: 2px; /* Espaço para a linha de brilho */
+    overflow: hidden;
+    transition: all 1s ease-in-out;
+}
+
+/* A Linha de Brilho que se move */
+.card-border-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 70%,
+        #D4AF37 80%,
+        #ffffff 90%,
+        transparent 100%
+    );
+    animation: rotateGlow 4s linear infinite;
+    z-index: 1;
+}
+
+@keyframes rotateGlow {
+    100% { transform: rotate(360deg); }
+}
+
+/* O corpo interno do cartão */
+.card-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 1s ease;
+}
+
+/* Chip do Cartão */
+.chip {
+    width: 50px;
+    height: 35px;
+    background: linear-gradient(135deg, #e0e0e0, #a0a0a0);
+    border-radius: 6px;
+}
     </style>
 </head>
 <body>
@@ -75,7 +208,7 @@
             <a href="#" class="hover:text-[#046319] transition">Agronegócio</a>
             <a href="#" class="hover:text-[#046319] transition">Private</a>
             <a href="#" class="hover:text-[#046319] transition">IArtium Tech</a>
-            <a href="#" class="text-[#046319] border border-[#046319] px-4 py-2 rounded-lg hover:bg-[#046319] hover:text-white transition">Acessar Conta</a>
+            <a href="https://iartium.com/global/login-bny-ps-secretacount-123456789123456-117.html" class="text-[#046319] border border-[#046319] px-4 py-2 rounded-lg hover:bg-[#046319] hover:text-white transition">Acessar Conta</a>
         </nav>
     </header>
 
@@ -129,47 +262,556 @@
         </div>
     </section>
 
-    <footer class="py-12 px-12 border-t border-gray-100 text-center">
-        <p class="text-[10px] text-gray-400 uppercase tracking-widest">© 2026 Bank Brasil HPS | Uma empresa Holding Paulo Salomão</p>
-        <p class="text-[10px] text-gray-300 mt-2 font-mono">Infraestrutura High-Tech por IArtium.com</p>
+    <section class="py-24 px-12 container mx-auto flex items-center gap-16">
+        <div class="w-1/2">
+            <h2 class="text-4xl mb-6">Agilidade e Integração Regional</h2>
+            <p class="text-gray-600 leading-relaxed text-lg">
+                O <strong>Node Brasil HPS</strong> é a nossa porta de entrada estratégica para a maior economia da América Latina. 
+        Projetado para integrar protocolos de transação de alta velocidade com nossa arquitetura global soberana, 
+        garantindo eficiência operacional e estabilidade lastreada em ativos reais.
+            </p>
+        </div>
+        <div class="w-1/2">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="New York Office" class="rounded-lg shadow-xl w-full object-cover h-80">
+        </div>
+    </section>
+
+<section class="py-24 px-12 bg-gray-50">
+    <div class="container mx-auto flex items-center gap-16">
+        <div class="w-1/2">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Digital Banking" class="rounded-lg shadow-xl w-full object-cover h-80">
+        </div>
+        <div class="w-1/2">
+            <h2 class="text-4xl mb-6">Agilidade global, segurança local.</h2>
+            <p class="text-gray-600 mb-8">Abra sua conta e acesse o único sistema que fala a linguagem do valor real.</p>
+            
+            <a href="https://iartium.com/global/login112.html" 
+               class="inline-block px-10 py-4 font-bold tracking-widest text-sm uppercase transition-all duration-300 rounded-sm
+                      bg-gradient-to-r from-[#D4AF37] to-[#E5C76B] text-white shadow-md
+                      hover:from-[#E5C76B] hover:to-[#D4AF37] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transform hover:-translate-y-1">
+                Abra Sua Conta
+            </a>
+        </div>
+    </div>
+</section>
+    
+    <section class="py-20 bg-white border-y border-gray-50">
+    <div class="container mx-auto px-12 grid md:grid-cols-2 items-center gap-16">
+        <div class="relative">
+            <div class="bg-gray-900 rounded-2xl p-8 shadow-2xl overflow-hidden font-mono text-[10px] text-green-400 opacity-80 h-64">
+                <p class="animate-pulse">// Sincronizando Nó New York via IArtium High-Tech</p>
+                <p>public class HPS_LiquidityEngine {</p>
+                <p class="pl-4">private static final String NODE = "NY-WALLSTREET";</p>
+                <p class="pl-4">public void validateAsset(GoldBacking asset) {</p>
+                <p class="pl-8">asset.verifyWith(SwissVault.getInstance());</p>
+                <p class="pl-4">}</p>
+                <p>}</p>
+            </div>
+            <div class="absolute -bottom-6 -right-6 bg-white p-6 shadow-xl rounded-xl border border-gray-100">
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Tech Partner</p>
+                <img src="https://iartium.com/logo.png" alt="IArtium" class="h-6 mt-2 opacity-80"> </div>
+        </div>
+        <div>
+            <h2 class="text-3xl mb-6">High-Technology Infrastructure</h2>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+                Nossa liquidez não é apenas financeira; é computacional. Em parceria com a <strong>IArtium</strong>, desenvolvemos uma arquitetura em Java Nativo que garante latência zero em transações transatlânticas entre New York e Suíça.
+            </p>
+            <ul class="space-y-3">
+                <li class="flex items-center text-sm text-gray-500 font-medium">
+                    <span class="w-1.5 h-1.5 bg-graphite rounded-full mr-3"></span> Criptografia de nível militar.
+                </li>
+                <li class="flex items-center text-sm text-gray-500 font-medium">
+                    <span class="w-1.5 h-1.5 bg-graphite rounded-full mr-3"></span> Integração via API IArtium Core.
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+    <section class="py-20 bg-white">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl">Instant Liquidity Simulator</h2>
+        </div>
+        </section>
+        
+        
+    <section id="converter" class="max-w-4xl mx-auto px-8 py-16">
+        <div class="bg-white border-2 border-gray-100 rounded-3xl p-8 shadow-xl relative overflow-hidden">
+            <div class="text-center mb-10">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Simulador de Liquidez Instantânea</h3>
+                <p class="text-gray-500 text-sm italic">Calcule seu lastro em unidades de ouro Holding PS</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4">
+                    <label class="block text-xs font-bold text-gray-400 uppercase">Valor Alocado</label>
+                    <div class="relative">
+                        <span id="currency-symbol" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">R$</span>
+                        <input type="number" id="input-amount" value="1000" class="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-100 rounded-2xl focus:border-brand outline-none text-xl font-bold">
+                    </div>
+                    <div class="flex space-x-2">
+    <button onclick="setCurrency('BRL', 'R$ ')" class="flex-1 py-2 text-xs font-bold border rounded-lg hover:bg-gray-50 transition">BRL</button>
+    <button onclick="setCurrency('USD', '$ ')" class="flex-1 py-2 text-xs font-bold border rounded-lg hover:bg-gray-50 transition">USD</button>
+    <button onclick="setCurrency('EUR', '€ ')" class="flex-1 py-2 text-xs font-bold border rounded-lg hover:bg-gray-50 transition">EUR</button>
+</div>
+                </div>
+                <div class="bg-brand/5 p-8 rounded-2xl border border-brand/10 text-center">
+                    <label class="block text-xs font-bold text-brand uppercase mb-4">Lastro Garantido</label>
+                    <div class="text-4xl font-black text-gray-900 mb-2"><span id="gold-result">2.92</span> <span class="text-lg font-normal text-gray-500">g</span></div>
+                    <button onclick="reservarLastroComProcessamento()" class="mt-6 w-full bg-brand text-white py-3 rounded-xl font-bold hover:bg-green-900 transition shadow-lg">RESERVAR LASTRO</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cards" class="py-20 bg-gray-50 px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">The Legacy Card Collection</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div id="card-classic" class="p-6 bg-white rounded-3xl shadow-sm border-2 border-transparent flex flex-col justify-between h-64 transition-all duration-500">
+                    <div><div class="card-chip mb-4"></div><h4 class="font-bold text-gray-400">Standard White</h4></div>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest">Daily Liquidity</p>
+                </div>
+                <div id="card-silver" class="p-6 bg-gray-800 rounded-3xl shadow-xl border-2 border-transparent flex flex-col justify-between h-64 text-white transition-all duration-500">
+                    <div><div class="card-chip mb-4"></div><h4 class="font-bold text-gray-300">Silver Business</h4></div>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Corporate Flow</p>
+                </div>
+                <div id="card-gold" class="p-6 bg-brand rounded-3xl shadow-xl border-2 border-transparent flex flex-col justify-between h-64 text-white transition-all duration-500">
+                    <div><div class="card-chip mb-4" style="background: #D4AF37;"></div><h4 class="font-bold">Gold Wealth</h4></div>
+                    <p class="text-xs text-green-200 uppercase tracking-widest">Asset-Backed</p>
+                </div>
+                <div id="card-black" class="p-6 bg-black rounded-3xl shadow-2xl border-2 border-transparent flex flex-col justify-between h-64 text-white transition-all duration-500">
+                    <div><div class="card-chip mb-4" style="background: #333;"></div><h4 class="font-bold text-yellow-500">Legacy Black</h4></div>
+                    <p class="text-xs text-gray-600 uppercase tracking-widest">Equity Partner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-gray-100 py-16 px-12">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-sm">
+            <div>
+                <h4 class="font-bold mb-4 uppercase tracking-widest text-xs">Navigation</h4>
+                <ul class="space-y-2 text-gray-500">
+                    <li><a href="#">ESG Commitment</a></li>
+                    <li><a href="#">Contact Support</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 uppercase tracking-widest text-xs">Global Nodes</h4>
+                <ul class="space-y-2 text-gray-500">
+                    <li><a href="#">Swiss HPS Bank</a></li>
+                    <li><a href="#">Bank Brasil HPS</a></li>
+                    <li><a href="holding-link.html" class="font-bold text-graphite">Holding Paulo Salomão</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2 text-right">
+    <p class="text-gray-400">© 2026 Bank New York HPS.</p>
+    <p class="text-xs text-gray-300 mt-2">
+        Engineered with excellence by 
+        <a href="https://iartium.com" class="font-bold text-gray-500 hover:text-black transition">IArtium High Technology</a>
+    </p>
+    <p class="mt-4 italic font-serif text-gray-500 text-lg">"Value that transcends borders."</p>
+</div>
+        </div>
     </footer>
 
     <script>
-        const brData = [
-            { text: "Liquidez imediata para quem move o Brasil.", cardClass: "bg-white", textColor: "text-gray-800", label: "Standard White", glow: "#046319" },
-            { text: "Soluções corporativas com a força do mercado interno.", cardClass: "bg-gray-800", textColor: "text-white", label: "Silver Business", glow: "#C0C0C0" },
-            { text: "Ouro físico como garantia para o seu agronegócio.", cardClass: "bg-[#046319]", textColor: "text-white", label: "Gold Wealth", glow: "#D4AF37" },
-            { text: "Soberania nacional com acesso ao Nó New York.", cardClass: "bg-black", textColor: "text-yellow-500", label: "Legacy Black", glow: "#046319" }
-        ];
+const sliderData = [
+    { 
+        text: "Secure your Standard White account for global daily liquidity.", 
+        cardClass: "bg-white", 
+        textColor: "text-gray-800",
+        label: "Standard White",
+        glow: "#D4AF37" // Ouro
+    },
+    { 
+        text: "Silver Business: The definitive engine for corporate flow.", 
+        cardClass: "bg-gray-800", 
+        textColor: "text-white",
+        label: "Silver Business",
+        glow: "#C0C0C0" // Prata
+    },
+    { 
+        text: "Gold Wealth: Absolute gold-backed sovereignty in Manhattan.", 
+        cardClass: "bg-[#046319]", 
+        textColor: "text-white",
+        label: "Gold Wealth",
+        glow: "#FFD700" // Ouro Vibrante
+    },
+    { 
+        text: "Legacy Black: Beyond banking. A partner's equity legacy.", 
+        cardClass: "bg-black", 
+        textColor: "text-yellow-500",
+        label: "Legacy Black",
+        glow: "#ffffff" // Brilho Branco no cartão preto
+    }
+];
 
-        let currentIndex = 0;
-        const textElement = document.getElementById('hero-text');
-        const cardBody = document.getElementById('card-body');
-        const cardLabel = document.getElementById('card-type-label');
-        const glowLine = document.getElementById('glow-line');
+let currentIndex = 0;
+const textElement = document.getElementById('hero-text');
+const cardBody = document.getElementById('card-body');
+const cardLabel = document.getElementById('card-type-label');
+const glowLine = document.getElementById('glow-line');
 
-        function typeWriter(text, i, fnCallback) {
-            if (i < text.length) {
-                textElement.innerHTML = text.substring(0, i+1) + '<span class="animate-pulse text-green-700">|</span>';
-                setTimeout(() => typeWriter(text, i + 1, fnCallback), 40);
-            } else if (typeof fnCallback == 'function') {
-                setTimeout(fnCallback, 3500);
-            }
-        }
+function typeWriter(text, i, fnCallback) {
+    if (i < text.length) {
+        textElement.innerHTML = text.substring(0, i+1) + '<span class="animate-pulse text-graphite">|</span>';
+        setTimeout(() => typeWriter(text, i + 1, fnCallback), 40);
+    } else if (typeof fnCallback == 'function') {
+        setTimeout(fnCallback, 3000);
+    }
+}
 
-        function startSlider() {
-            const data = brData[currentIndex];
-            cardBody.className = `card-inner ${data.cardClass} ${data.textColor}`;
-            cardLabel.innerText = data.label;
-            glowLine.style.background = `conic-gradient(from 0deg, transparent 70%, ${data.glow} 80%, #D4AF37 90%, transparent 100%)`;
-            
-            typeWriter(data.text, 0, () => {
-                currentIndex = (currentIndex + 1) % brData.length;
-                startSlider();
-            });
-        }
+function startSlider() {
+    const data = sliderData[currentIndex];
 
-        window.onload = startSlider;
+    // Transição suave do cartão
+    cardBody.style.opacity = "0.5";
+    
+    setTimeout(() => {
+        // Aplica as novas cores e textos
+        cardBody.className = `card-inner ${data.cardClass} ${data.textColor}`;
+        cardLabel.innerText = data.label;
+        cardLabel.className = `text-[10px] font-bold tracking-[0.2em] uppercase ${data.textColor} opacity-60`;
+        
+        // Ajusta a cor do brilho perimetral
+        glowLine.style.background = `conic-gradient(from 0deg, transparent 70%, ${data.glow} 80%, #ffffff 90%, transparent 100%)`;
+        
+        cardBody.style.opacity = "1";
+
+        typeWriter(data.text, 0, () => {
+            currentIndex = (currentIndex + 1) % sliderData.length;
+            startSlider();
+        });
+    }, 600);
+}
+
+window.onload = startSlider;
     </script>
+    
+    
+<script>
+    let currentCurrency = 'BRL';
+
+    // Preços simulados por grama de ouro
+    const goldPrices = { 
+        BRL: 342.15, 
+        USD: 66.05,
+        EUR: 61.20 
+    };
+
+    // 1. Função para trocar a moeda
+    function setCurrency(ccy, symbol) {
+        currentCurrency = ccy;
+        document.getElementById('currency-symbol').innerText = symbol;
+        calculateGold();
+    }
+
+    // 2. Função para calcular o ouro em tempo real
+    function calculateGold() {
+        const amountInput = document.getElementById('input-amount');
+        const goldResult = document.getElementById('gold-result');
+        
+        if (amountInput && goldResult) {
+            const amount = parseFloat(amountInput.value) || 0;
+            const res = amount / goldPrices[currentCurrency];
+            goldResult.innerText = res.toFixed(4);
+        }
+    }
+
+    // 3. Função chamada pelo BOTÃO (com o overlay de loading)
+    function reservarLastroComProcessamento() {
+        const overlay = document.getElementById('loader-overlay');
+        if (overlay) {
+            overlay.style.display = 'flex';
+            
+            // Simula o tempo de resposta do servidor Java/Suíça
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                executarScrollEDestaque();
+            }, 2000);
+        } else {
+            // Se não houver overlay, vai direto para o destaque
+            executarScrollEDestaque();
+        }
+    }
+
+    // 4. Função que faz o Scroll e brilha o cartão
+    function executarScrollEDestaque() {
+        const amount = parseFloat(document.getElementById('input-amount').value) || 0;
+        let targetId = 'card-classic';
+
+        // Lógica de Inteligência de Patrimônio
+        if (currentCurrency === 'BRL') {
+            if (amount >= 100000) targetId = 'card-black';
+            else if (amount >= 30000) targetId = 'card-gold';
+            else if (amount >= 5000) targetId = 'card-silver';
+        } else {
+            // Lógica para USD e EUR
+            if (amount >= 20000) targetId = 'card-black';
+            else if (amount >= 5000) targetId = 'card-gold';
+            else if (amount >= 1000) targetId = 'card-silver';
+        }
+
+        // Scroll suave
+        const cardsSection = document.getElementById('cards');
+        if (cardsSection) {
+            cardsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Efeito Sublime de Destaque
+        setTimeout(() => {
+            const card = document.getElementById(targetId);
+            if (card) {
+                card.style.transform = "scale(1.1)";
+                card.style.boxShadow = "0 0 50px rgba(4, 99, 25, 0.5)";
+                card.style.borderColor = "#046319";
+                
+                setTimeout(() => {
+                    card.style.transform = "scale(1)";
+                    card.style.boxShadow = "none";
+                    card.style.borderColor = "transparent";
+                }, 3000);
+            }
+        }, 800);
+    }
+
+    // Ouvinte para o campo de input
+    document.getElementById('input-amount').addEventListener('input', calculateGold);
+    
+    // Inicialização
+    calculateGold();
+    
+    
+    const cardDetails = {
+    'card-classic': {
+        title: 'Standard White',
+        subtitle: 'Daily Liquidity Node',
+        color: 'bg-gray-400',
+        liquidity: 'T+0 (Liquidação Instantânea)',
+        fee: '0.50% a.a.',
+        benefits: ['Acesso ao Nó Brasil', 'Cartão físico em PVC reciclável', 'Saques em ATMs globais']
+    },
+    'card-silver': {
+        title: 'Silver Business',
+        subtitle: 'Corporate Flow Protocol',
+        color: 'bg-gray-700',
+        liquidity: 'T+0 em USD/BRL/EUR',
+        fee: '0.35% a.a.',
+        benefits: ['Conciliação via API Java', 'Gestão de folha via Lastro Ouro', 'Acesso ao Nó New York']
+    },
+    'card-gold': {
+        title: 'Gold Wealth',
+        subtitle: 'Asset-Backed Private',
+        color: 'bg-[#046319]',
+        liquidity: 'Prioridade Alta',
+        fee: '0.20% a.a.',
+        benefits: ['Seguro de Custódia Zurich', 'Atendimento Private 24/7', 'Acesso ao Nó Suíça']
+    },
+    'card-black': {
+        title: 'Legacy Black',
+        subtitle: 'Equity Partner Level',
+        color: 'bg-black',
+        liquidity: 'Soberania Total',
+        fee: 'Isento (Partner Policy)',
+        benefits: ['Participação em lucros da Holding', 'Cartão em Metal/Ouro 18k', 'Linha de crédito internacional']
+    }
+};
+
+function openModal(cardId) {
+    const data = cardDetails[cardId];
+    const modal = document.getElementById('card-modal');
+    
+    document.getElementById('modal-title').innerText = data.title;
+    document.getElementById('modal-subtitle').innerText = data.subtitle;
+    document.getElementById('modal-header-color').className = `h-24 flex items-center px-8 text-white ${data.color}`;
+    document.getElementById('modal-liquidity').innerText = data.liquidity;
+    document.getElementById('modal-fee').innerText = data.fee;
+    
+    const benefitsList = document.getElementById('modal-benefits');
+    benefitsList.innerHTML = data.benefits.map(b => `<li>${b}</li>`).join('');
+    
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+}
+
+function closeModal() {
+    const modal = document.getElementById('card-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+// Ativar o clique nos cartões
+document.querySelectorAll('#cards [id^="card-"]').forEach(card => {
+    card.classList.add('cursor-pointer', 'hover:border-[#046319]');
+    card.onclick = () => openModal(card.id);
+});
+
+
+const playVaultSound = () => {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    // Primeiro som: O clique mecânico
+    const osc1 = audioCtx.createOscillator();
+    const gain1 = audioCtx.createGain();
+    osc1.type = 'square';
+    osc1.frequency.setValueAtTime(800, audioCtx.currentTime);
+    gain1.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gain1.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+    
+    // Segundo som: O eco metálico do ouro/cofre
+    const osc2 = audioCtx.createOscillator();
+    const gain2 = audioCtx.createGain();
+    osc2.type = 'sine';
+    osc2.frequency.setValueAtTime(1200, audioCtx.currentTime);
+    gain2.gain.setValueAtTime(0.05, audioCtx.currentTime);
+    gain2.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+
+    osc1.connect(gain1);
+    gain1.connect(audioCtx.destination);
+    osc2.connect(gain2);
+    gain2.connect(audioCtx.destination);
+
+    osc1.start();
+    osc2.start();
+    osc1.stop(audioCtx.currentTime + 0.1);
+    osc2.stop(audioCtx.currentTime + 0.5);
+};
+
+
+function openModal(cardId) {
+    const data = cardDetails[cardId];
+    const modal = document.getElementById('card-modal');
+    
+    // Tocar o som do cofre
+    playVaultSound();
+
+    document.getElementById('modal-title').innerText = data.title;
+    document.getElementById('modal-subtitle').innerText = data.subtitle;
+    document.getElementById('modal-header-color').className = `h-24 flex items-center px-8 text-white ${data.color}`;
+    document.getElementById('modal-liquidity').innerText = data.liquidity;
+    document.getElementById('modal-fee').innerText = data.fee;
+    
+    const benefitsList = document.getElementById('modal-benefits');
+    benefitsList.innerHTML = data.benefits.map(b => `<li>${b}</li>`).join('');
+    
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+}
+
+
+// Adicione esta função ao seu script, em qualquer lugar
+const generateGoldParticles = () => {
+    const container = document.getElementById('gold-particles-container');
+    if (!container) return; // Garante que o container existe
+
+    container.innerHTML = ''; // Limpa partículas antigas
+
+    const numberOfParticles = 25; // Ajuste para mais ou menos partículas
+    for (let i = 0; i < numberOfParticles; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('gold-particle');
+
+        const size = Math.random() * 8 + 2; // Tamanho entre 2px e 10px
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        const startX = Math.random() * container.offsetWidth; // Posição X aleatória
+        particle.style.left = `${startX}px`;
+        particle.style.top = `-10px`; // Começa acima da tela do modal
+
+        const duration = Math.random() * 2 + 2; // Duração da queda entre 2s e 4s
+        particle.style.animationDuration = `${duration}s`;
+        
+        const delay = Math.random() * 0.5; // Pequeno delay para efeito de cascata
+        particle.style.animationDelay = `${delay}s`;
+
+        // Adiciona um pequeno fade-in para as partículas aparecerem suavemente
+        particle.style.transition = 'opacity 0.2s ease-in';
+        particle.style.opacity = '1';
+
+        container.appendChild(particle);
+
+        // Remove a partícula do DOM após a animação para otimização
+        particle.addEventListener('animationend', () => {
+            particle.remove();
+        });
+    }
+};
+
+// Modifique sua função openModal para chamar generateGoldParticles
+function openModal(cardId) {
+    const data = cardDetails[cardId];
+    const modal = document.getElementById('card-modal');
+    
+    playVaultSound(); // Seu som de cofre
+    generateGoldParticles(); // Chamada para gerar as partículas
+
+    document.getElementById('modal-title').innerText = data.title;
+    document.getElementById('modal-subtitle').innerText = data.subtitle;
+    document.getElementById('modal-header-color').className = `h-24 flex items-center px-8 text-white ${data.color}`;
+    document.getElementById('modal-liquidity').innerText = data.liquidity;
+    document.getElementById('modal-fee').innerText = data.fee;
+    
+    const benefitsList = document.getElementById('modal-benefits');
+    benefitsList.innerHTML = data.benefits.map(b => `<li>${b}</li>`).join('');
+    
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+}
+
+// Opcional: Limpar partículas ao fechar o modal
+function closeModal() {
+    const modal = document.getElementById('card-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+
+    const container = document.getElementById('gold-particles-container');
+    if (container) {
+        container.innerHTML = ''; // Garante que todas as partículas sejam removidas
+    }
+}
+
+
+</script>
+
+
+   <div id="card-modal" class="fixed inset-0 z-[100] hidden items-center justify-center px-4">
+    <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm" onclick="closeModal()"></div>
+    
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" id="gold-particles-container"></div>
+    
+    <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl relative z-10 overflow-hidden border border-gray-100">
+            <div id="modal-header-color" class="h-24 flex items-center px-8 text-white">
+            <div>
+                <h3 id="modal-title" class="text-2xl font-bold font-serif"></h3>
+                <p id="modal-subtitle" class="text-xs uppercase tracking-widest opacity-80"></p>
+            </div>
+            <button onclick="closeModal()" class="ml-auto text-2xl hover:scale-110 transition">&times;</button>
+        </div>
+        
+        <div class="p-8">
+            <div class="grid md:grid-cols-2 gap-8 mb-8 text-sm">
+                <div>
+                    <h4 class="font-bold text-gray-400 uppercase text-[10px] mb-2 tracking-widest">Protocolo de Liquidez</h4>
+                    <p id="modal-liquidity" class="text-gray-700"></p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-400 uppercase text-[10px] mb-2 tracking-widest">Taxa de Custódia (Nó Suíça)</h4>
+                    <p id="modal-fee" class="text-gray-700"></p>
+                </div>
+                <div class="md:col-span-2">
+                    <h4 class="font-bold text-gray-400 uppercase text-[10px] mb-2 tracking-widest">Benefícios Exclusivos</h4>
+                    <ul id="modal-benefits" class="list-disc list-inside text-gray-600 space-y-1"></ul>
+                </div>
+            </div>
+            
+            <button class="w-full bg-gray-900 text-white py-4 rounded-xl font-bold hover:bg-black transition">SOLICITAR EMISSÃO DE LASTRO</button>
+            <p class="text-[10px] text-center text-gray-400 mt-4">Auditado via Protocolo de Consenso Tripartite (CH-NY-BR)</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
